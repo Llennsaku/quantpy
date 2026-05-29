@@ -1,0 +1,5 @@
+tushare
+pandas
+backtrader
+matplotlib
+python-dotenv
