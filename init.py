@@ -21,12 +21,6 @@ if not token:
 ts.set_token(token)
 pro = ts.pro_api()
 # %%
-# 使用 pro.daily() 获取日线数据（你拥有的接口权限）
-# 返回: ts_code, trade_date, open, high, low, close, pre_close, change, pct_chg, vol, amount
-df = pro.daily(ts_code='000001.SZ', start_date='20180101', end_date='20181011')
-print("daily 返回列:", df.columns.tolist())
-print(df.head())
-# %%
 # ==========================================
 # 2. 定义获取数据的函数（关键步骤）
 # ==========================================
@@ -240,7 +234,7 @@ if __name__ == '__main__':
     ]
 
     START_DATE = '20260101'
-    END_DATE   = '20260528'
+    END_DATE   = '20260529'
     INIT_CASH  = 100000.0
     PER_STOCK  = INIT_CASH / len(STOCK_LIST)
 
