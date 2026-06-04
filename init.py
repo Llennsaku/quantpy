@@ -75,12 +75,13 @@ class AShareCommission(bt.CommInfoBase):
     - 佣金费率 0.0001（万一），买入/卖出都收
     - 最低佣金 5 元（不免五）
     - 印花税 0.001（千一），仅卖出时收取
-    - 过户费 0.00002（十万分之二），买卖都收（简化为包含在佣金中）
+    - 过户费 0.00001（0.001%），买入/卖出都收
     """
     params = (
-        ('commission', 0.0001),   # 万一佣金费率
-        ('stamp_duty', 0.001),    # 千一印花税（仅卖出）
-        ('min_commission', 5.0),  # 最低佣金 5 元
+        ('commission', 0.0001),    # 万一佣金费率
+        ('stamp_duty', 0.001),     # 千一印花税（仅卖出）
+        ('transfer_fee', 0.00001), # 0.001% 过户费（买卖双向）
+        ('min_commission', 5.0),   # 最低佣金 5 元
     )
 
     def _getcommission(self, size, price, pseudoexec):
@@ -123,14 +124,19 @@ class AShareCommission(bt.CommInfoBase):
             return abs(size) * price * self.p.stamp_duty
         return 0.0
 
+    def _gettransferfee(self, size, price):
+        """过户费，买入卖出双向收取"""
+        return abs(size) * price * self.p.transfer_fee
+
     def getvaluesize(self, size, price):
         return abs(size) * price
 
     def getoperationcost(self, size, price):
-        """总交易成本 = 佣金 + 印花税"""
+        """总交易成本 = 佣金 + 印花税 + 过户费"""
         comm = self._getcommission(size, price, pseudoexec=True)
         stamp = self._getstampduty(size, price)
-        return comm + stamp
+        transfer = self._gettransferfee(size, price)
+        return comm + stamp + transfer
 
 
 # ==========================================
