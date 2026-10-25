@@ -1,0 +1,67 @@
+{
+  "config": {
+    "top_n": 8,
+    "rebalance_months": 3,
+    "volatility_days": 60,
+    "dividend_window_days": 730,
+    "min_dividend_years": 2,
+    "yield_weight": 0.5,
+    "low_vol_weight": 0.3,
+    "consistency_weight": 0.2,
+    "commission_rate": 0.0001,
+    "transfer_fee_rate": 1e-05,
+    "stamp_duty_rate": 0.0005,
+    "min_commission": 5.0,
+    "initial_cash": 1000000.0
+  },
+  "periods": {
+    "train": [
+      "20160101",
+      "20211231"
+    ],
+    "validation": [
+      "20220101",
+      "20231231"
+    ],
+    "test": [
+      "20240101",
+      "20261023"
+    ]
+  },
+  "strategy": {
+    "full": {
+      "total_return": 1.777313064582648,
+      "annual_return": 0.10311415414392822,
+      "volatility": 0.13178813411860685,
+      "sharpe": 0.8106982469432098,
+      "max_drawdown": -0.19225497270506597,
+      "calmar": 0.5363406350072064
+    },
+    "test": {
+      "total_return": 0.4116889964918018,
+      "annual_return": 0.13672448436119145,
+      "volatility": 0.14642938823381316,
+      "sharpe": 0.9487226814314691,
+      "max_drawdown": -0.11569121357470025,
+      "calmar": 1.1818052567398327
+    }
+  },
+  "benchmark": {
+    "full": {
+      "total_return": 0.18341046264326488,
+      "annual_return": 0.01631035898844546,
+      "volatility": 0.18846482280579985,
+      "sharpe": 0.18029113082409604,
+      "max_drawdown": -0.45602619548225287,
+      "calmar": 0.03576627647715955
+    },
+    "test": {
+      "total_return": 0.19650171518837545,
+      "annual_return": 0.06895379917495248,
+      "volatility": 0.1861654370414849,
+      "sharpe": 0.4510330850626497,
+      "max_drawdown": -0.20225892738204798,
+      "calmar": 0.3409184458132979
+    }
+  }
+}

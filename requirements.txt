@@ -1,5 +1,7 @@
 tushare
+akshare
 pandas
+numpy
 backtrader
 matplotlib
 python-dotenv

@@ -1,4 +1,5 @@
 .env
 stock_cache/
+dividend_cache/
 __pycache__/
 *.pyc
